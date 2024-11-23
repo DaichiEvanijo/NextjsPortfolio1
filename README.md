@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Title
 
-## Getting Started
+Next.js (App Router) Blog and E-commerce Website with Next-Auth/Typescript/React/Tailwind CSS
 
-First, run the development server:
+## Login Info
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Username:Daichi Password:Aa$12345 roles:5150 (as Admin)  
+*other users (also new users) will automatically assigned with role:2001 (as User)  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+※Without login →   
+Website visitor can only see postslist and individual posts     
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+※Login as User(2001) (e.g.Takahiro) →   
+Login user is able to create, edit/delete(only the posts this user created), see the posts by users and react by liking posts created by other users  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+※Login as Admin(5150) (e.g.Daichi) →  
+Login user is able to create, edit/delete(only the posts only this user created), see the posts by users and react by liking posts created by other users and visit the Admin page  
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Implemented skills  
+App router, Server actions with zod validation, useOptimistic, Caching of ORM data fetching with "unstable_cache function", Parallel data fetching with Promise.all, URL state with searchParams, Image component (placeholder, sizes), generateMetadata,  generateStaticParams, Next-Auth, Role-based Authorization, Password reset function, module-augmentatin, signIn/redirect/jwt/session callback, profile function, authorize function, Image Upload/Delete with Cloudinary and other basics...
+ 

@@ -1,101 +1,95 @@
 import Image from "next/image";
+import HomeImage from "../../public/HomeImage.jpg"
+import TypeAnimation from "@/lib/thirdParty/react-type-animation"
+import Section from "@/components/elements/Section";
+import { SiNextdotjs } from "react-icons/si";
+import {  FaReact } from "react-icons/fa";
+import { SiTypescript } from "react-icons/si";
+import { SiMongodb } from "react-icons/si";
+import { FaNodeJs } from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+import Accordion from "@/features/home/Accordion";
+import Caption from "@/features/home/Caption";
+import PortfolioList from "@/features/home/PortfolioList";
 
-export default function Home() {
+
+
+export default function Home() {  
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <Section className="">
+      <section className="flex justify-center items-center min-h-[calc(100vh-72px)]">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* hero image start */}
+        <Image
+          className="-z-10 absolute w-full h-[calc(100vh-72px)] object-cover"
+          src={HomeImage}
+          alt="Home Image"
+          width={1445.76}
+          height={1118.89}
+          sizes="100vw"
+          placeholder="blur"
+        />
+        {/* hero image end */}
+
+
+        {/* text in hero image start*/}
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-52 gap-24  animate-fromAbove p-6">
+          <TypeAnimation
+            className="text-2xl font-bold bg-gradient-to-r from-white via-white to-yellow-500  text-transparent bg-clip-text text-center h-[18vh]"
+            sequence={[
+              `I am\nDaichi\nKoyanagi`,
+              2000,
+              `I am\na self-taught\nfrontend\ndeveloper`,
+              2000, 
+              `I am\npassionate\nabout\nprogramming`, 
+              2000, 
+              `I love\nlearning\nnew stuff`, 
+              2000, 
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={Infinity}
+            deletionSpeed={90}
+            style={{ fontSize: "em", display: "inline-block", whiteSpace:"pre-line", }}
+          />
+          <div className="text-white text-center bg-black bg-opacity-40 rounded-2xl  p-4 space-y-2 shadow-xl">
+            <p>created by</p>
+            <div className="flex gap-4 justify-center items-center">
+              <SiNextdotjs size={40}/>
+              <SiTypescript size={40}/>
+              <FaReact size={40}/>
+            </div>
+            <div className="flex gap-4 justify-center items-center">
+              <FaNodeJs size={40}/>
+              <SiMongodb size={40}/>
+              <RiTailwindCssFill size={40}/>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {/* text in hero image end*/}
+
+
+      </section>
+      
+
+      <div className="flex flex-col justify-center items-center gap-48 py-48 px-4">
+
+        <Caption/>
+        
+        {/* Portfolios start */}
+        <div className="flex flex-col justify-start items-start gap-4">
+          <p className="text-2xl">Links to my portfolios</p>
+          <PortfolioList/>
+        </div>
+        {/* Portfolios end */}
+
+        <Accordion/>
+        
+      </div>
+
+    
+    </Section>
   );
 }
+
+
