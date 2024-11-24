@@ -21,7 +21,7 @@ const Register = () => {
     if (!result.success) {
       let errMsg = "";
       result.error.issues.forEach((issue) => {
-        errMsg = errMsg + issue.path[0] + ":" + issue.message;
+        errMsg += `${issue.path[0]}:\n ${issue.message}\n\n`
       });
       toast.error(errMsg);
       return;
@@ -61,7 +61,7 @@ const Register = () => {
         <Button type="button"><Link href="/api/auth/signin">Log in</Link></Button>
       </div>
       <div>
-        <span className="me-6">Discover posts without login ?</span>
+        <span className="me-6">Go back to Home</span>
         <Button type="button"><Link href="/">Home</Link></Button>
       </div>
     </SectionForForm>
@@ -69,3 +69,4 @@ const Register = () => {
 };
 
 export default Register;
+
