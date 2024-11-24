@@ -11,6 +11,7 @@ import TimeAgo from "@/components/elements/TimeAgo";
 import Section from "@/components/elements/Section";
 import DynamicImage from "@/components/elements/DynamicImage";
 import AddPostButton from "@/features/posts/AddPostButton";
+import ScrollToTop from "@/components/elements/ScrollToTop";
 
 type PostsListProps = {
   searchParams: Promise<{
@@ -35,6 +36,8 @@ const PostsList = async ({ searchParams }: PostsListProps) => {
 
   return (
     <Section className="flex flex-col gap-12 p-12">
+
+      <ScrollToTop page={page} search={search}/>
 
       {/* Hero section start*/}
       <section className="flex flex-col justify-center items-center gap-24 py-24 text-center ">
