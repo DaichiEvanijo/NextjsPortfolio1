@@ -24,7 +24,7 @@ const PortfolioList = () => {
             <Link href="/">Demo</Link>
           </Button>
           <Button>
-            <Link href="/" target="_blank">
+            <Link href="https://github.com/DaichiEvanijo/NextjsPortfolio1" target="_blank">
               Source code
             </Link>
           </Button>
