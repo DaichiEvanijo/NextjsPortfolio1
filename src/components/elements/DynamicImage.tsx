@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
-const DynamicImage = async ({
+const DynamicImage = ({
   ...props
 }: React.ComponentProps<"div"> & { url: string; sizes: string }) => {
   const { className, url, sizes, ...others } = props;
