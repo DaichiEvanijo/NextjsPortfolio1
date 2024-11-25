@@ -10,7 +10,7 @@ const BlogHeadline = ({posts}:{posts:PostType[]}) => {
       <h3 className="text-2xl bg-gradient-to-r from-slate-400 via-yellow-200 to-yellow-500 text-transparent bg-clip-text">Check out our blog forum !!</h3>
       <p> Latest Blogs...</p>
       <ul className="flex flex-col lg:flex-row gap-4 items-center justify-center w-full">
-        {posts.map((post, i) => {
+        {posts.map((post) => {
           return (
             <li
             key={post._id}
