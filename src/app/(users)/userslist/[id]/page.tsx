@@ -1,5 +1,5 @@
-import { getCachedPostsByUser } from "@/lib/functions/fetchDB/fetchPost";
-import { getCachedIndividualUser } from "@/lib/functions/fetchDB/fetchUser";
+import { getPostsByUser } from "@/lib/functions/fetchDB/fetchPost";
+import {  getIndividualUser } from "@/lib/functions/fetchDB/fetchUser";
 import { PostType } from "@/lib/types/PostType";
 import { UserType } from "@/lib/types/UserType";
 import User from "@/models/User";
@@ -25,8 +25,8 @@ type UserPageProps = {
 };
 const UserPage = async ({ params }: UserPageProps) => {
   const { id } = await params;
-  const user: UserType = await getCachedIndividualUser(id);
-  const postsByUser: PostType[] = await getCachedPostsByUser(
+  const user: UserType = await getIndividualUser(id);
+  const postsByUser: PostType[] = await getPostsByUser(
     user.name,
     user.provider
   );

@@ -69,7 +69,7 @@ export const editPost = async (
       
       revalidatePath(`/postslist/${id}`);
       revalidatePath("/postslist");
-      
+      revalidatePath("/");
     }catch(err){
       return {
         message:getErrorMessage(err)

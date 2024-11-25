@@ -11,10 +11,16 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import Accordion from "@/features/home/Accordion";
 import Caption from "@/features/home/Caption";
 import PortfolioList from "@/features/home/PortfolioList";
+import { getCachedPostsForHeadline } from "@/lib/functions/fetchDB/fetchPost";
+import { PostType } from "@/lib/types/PostType";
+import BlogHeadline from "@/features/home/BlogHeadline";
 
 
 
-export default function Home() {  
+export default async function Home() {  
+  const posts:PostType[] = await getCachedPostsForHeadline()
+  
+  
   return (
     <Section className="">
       <section className="flex justify-center items-center min-h-[calc(100vh-72px)]">
@@ -77,14 +83,18 @@ export default function Home() {
         <Caption/>
         
         {/* Portfolios start */}
-        <div className="flex flex-col justify-start items-start gap-4">
+        <section className="flex flex-col justify-start items-start gap-4">
           <p className="text-2xl">Links to my portfolios</p>
           <PortfolioList/>
-        </div>
+        </section>
         {/* Portfolios end */}
 
         <Accordion/>
-        
+
+        {/* Headline for blog posts start */}
+        <BlogHeadline posts={posts}/>
+        {/* Headline for blog posts end */}
+
       </div>
 
     

@@ -5,20 +5,38 @@ import Post from "@/models/Post";
 import { connectToDatabase } from "@/utils/mogoDButil/db";
 import { unstable_cache } from "next/cache";
 
-// import Post from "@/models/Post"
-// import { connectToDatabase } from "@/utils/mogoDButil/db"
-// import { unstable_cache } from "next/cache"
 
-// const getAllPosts= async () => {
-//   try{
-//     await connectToDatabase()
-//     const posts = await Post.find()
-//     return posts
-//   }catch(err){
-//     throw new Error("failed to fetch posts")
-//   }
-// }
-// export const getCachedAllPosts = unstable_cache(getAllPosts)
+
+
+const getPostsForHeadline = async ():Promise<PostType[]> => {
+  try{
+    await connectToDatabase()
+    const posts = await Post.find().sort({createdAt:-1}).limit(3)
+    const serializedPosts:PostType[] = posts.map((post) => {
+      return {
+        _id: post._id.toString(),
+        name: post.name,
+        title: post.title,
+        body: post.body,
+        imageUrls:post.imageUrls,
+        reactions: post.reactions,
+        reactedUsers: post.reactedUsers,
+        provider: post.provider,
+        createdAt:post.createdAt,
+        updatedAt:post.updatedAt,
+      };
+    });
+    return serializedPosts;
+  }catch(err){
+    throw new Error(`failed to fetch 3 posts for headline,${err}`)
+  }
+}
+
+export const getCachedPostsForHeadline = unstable_cache(getPostsForHeadline)
+
+
+
+
 
 const getPostsforPagination = async (
   page = 1,
@@ -71,6 +89,9 @@ export const getCachedPostsforPagination = unstable_cache(
 
 
 
+
+
+
 const getPostsForSearchbar = async (search: string | undefined) :Promise<PostType[]>=> {
   try {
     await connectToDatabase();
@@ -107,7 +128,10 @@ const getPostsForSearchbar = async (search: string | undefined) :Promise<PostTyp
   }
 };
 
-export const getCachedPostsforSearchbar = unstable_cache(getPostsForSearchbar);
+export const getCachedPostsforSearchbar = unstable_cache((search: string | undefined) => getPostsForSearchbar(search));
+
+
+
 
 
 
@@ -144,10 +168,12 @@ export const getCachedIndividualPost = unstable_cache((id: string) =>
 
 
 
-const getPostsByUser = async (name: string, provider: string):Promise<PostType[]> => {
+
+
+export const getPostsByUser = async (name: string, provider: string):Promise<PostType[]> => {
   try {
     await connectToDatabase();
-    const posts = await Post.find({ name, provider }).sort({ createdAt: -1 });;
+    const posts = await Post.find({ name, provider }).sort({ createdAt: -1 });
     const serializedPosts:PostType[]= posts.map((post) => {
       return {
         _id: post._id.toString(),
@@ -167,6 +193,4 @@ const getPostsByUser = async (name: string, provider: string):Promise<PostType[]
     throw new Error(`failed to fetch posts by user:${err}`);
   }
 };
-export const getCachedPostsByUser = unstable_cache(
-  (name: string, provider: string) => getPostsByUser(name, provider)
-);
+

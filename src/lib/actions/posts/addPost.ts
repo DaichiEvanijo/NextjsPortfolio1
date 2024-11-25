@@ -61,6 +61,7 @@ export const addPost = async (
         imageUrls,
       });
       revalidatePath("/postslist")
+      revalidatePath("/")
     } catch (err) {
       return {
         message: getErrorMessage(err),

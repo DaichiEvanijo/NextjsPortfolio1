@@ -19,7 +19,7 @@ const Accordion = () => {
   }
 
   return (
-    <div className="space-y-5">
+    <section className="space-y-5">
       <div className="flex flex-col text-xl text-center">
           Here is the list of languages and topics that I have learned and used until now
       </div>
@@ -38,7 +38,7 @@ const Accordion = () => {
          )
         })}
       </ol>
-    </div>
+    </section>
   )
 }
 

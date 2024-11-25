@@ -30,7 +30,7 @@ export const handleRegistration = async (data: handleRegistrationProps) => {
     const newUser = await User.create({
       name: result.data.name.trim(),
       password: hashedPassword.trim(),
-      provider: "credentials",
+      provider: "Credentials",
     });
     console.log(`Registration was done with \n ${newUser}`);
   } catch (err) {

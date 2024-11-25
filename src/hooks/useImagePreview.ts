@@ -8,8 +8,8 @@ const useImagePreview = () => {
     console.log(e.target.files)
     if(e.target.files && e.target.files.length){
       const file = e.target.files[0] 
-      if (file.size > 800000) {
-        toast.error("the size of your image must be less than 800KB")
+      if (file.size > 1000000) {
+        toast.error("the size of your image must be less than 1MB")
         return 
       }
       const url = URL.createObjectURL(file)

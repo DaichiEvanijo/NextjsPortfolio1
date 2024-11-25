@@ -6,7 +6,7 @@ type SectionForFormProps ={
 const SectionForForm = ({h2Text, children}:SectionForFormProps) => {
   return (
     <section className="min-h-[calc(100vh-144px)] overflow-y-auto flex flex-col items-center justify-center py-4 ">
-        <div className="w-4/5 sm:w-3/4 max-w-2xl bg-lime-100 shadow-xl rounded-xl p-3 flex flex-col gap-3 ">
+        <div className="w-4/5 sm:w-3/4 max-w-2xl  bg-gradient-to-r from-blue-100 via-yellow-200 to-blue-100 shadow-xl rounded-xl p-3 flex flex-col gap-3 ">
           <h2 className="text-3xl my-3">{h2Text}</h2>
           {children}
         </div>

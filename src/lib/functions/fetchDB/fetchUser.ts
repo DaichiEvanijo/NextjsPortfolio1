@@ -3,7 +3,6 @@ import 'server-only'
 import { UserType } from "@/lib/types/UserType"
 import User from "@/models/User"
 import { connectToDatabase } from "@/utils/mogoDButil/db"
-import { unstable_cache } from "next/cache"
 
 
 
@@ -26,14 +25,12 @@ export const getAllUsers = async () :Promise<UserType[]>=> {
   }
 }
 
-// export const getCachedAllUsers = unstable_cache(getAllUsers)
 
 
 
 
 
-
-const getIndividualUser= async (id:string) :Promise<UserType>=> {
+export const getIndividualUser= async (id:string) :Promise<UserType>=> {
   try{
     await connectToDatabase()
     const user:UserType|null = await User.findOne({_id:id})
@@ -52,7 +49,6 @@ const getIndividualUser= async (id:string) :Promise<UserType>=> {
   }
 }
 
-export const getCachedIndividualUser = unstable_cache((id:string) => getIndividualUser(id))
 
 
 

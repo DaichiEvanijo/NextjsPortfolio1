@@ -60,7 +60,7 @@ export const options: NextAuthOptions = {
       async authorize(credentials) {
         await connectToDatabase();
         try {
-          const foundUser = await User.findOne({ name: credentials?.name, provider:"credentials"}).exec();
+          const foundUser = await User.findOne({ name: credentials?.name, provider:"Credentials"}).exec();
           if (!foundUser) {
             console.error("Authorization error: User not found for username:", credentials?.name);
             return null 

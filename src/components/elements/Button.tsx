@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 export const btnStyles = cva(["transition duration-500 ease-in-out"], {
   variants:{
     variant:{
-      default:["hover:opacity-60", "text-lime-500","disabled:text-slate-200","border","border-lime-500", "rounded"],
+      default:["hover:opacity-60", "text-lime-500","disabled:text-slate-300","border","border-lime-500", "rounded"],
       disabled:["hover:opacity-60", "text-slate-200","border","border-lime-500", "rounded"],
       yellow:["text-yellow-300", "border", "border-white", "hover:border","hover:border-yellow-300", "rounded-xl" ],
       icon:["hover:opacity-60", "text-lime-500", "border", "border-slate-200", "rounded"],

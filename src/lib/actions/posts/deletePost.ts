@@ -31,6 +31,7 @@ export const deletePost = async (id:string) => {
         await cloudinary.uploader.destroy(publicId);
       })
       revalidatePath("/postslist");
+      revalidatePath("/");
     }catch(err){
       return {
         message:getErrorMessage(err)
