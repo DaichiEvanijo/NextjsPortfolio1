@@ -22,7 +22,7 @@ export const handleForgetPassword = async (
 
   const foundUser = await User.findOne({
     name: name.trim(),
-    provider: "credentials",
+    provider: "Credentials",
   }).exec();
   if (!foundUser)
     return {
