@@ -24,6 +24,10 @@ export const handleRegistration = async (data: handleRegistrationProps) => {
   }
 
   await connectToDatabase();
+
+  const duplicate = await User.findOne({name:result.data.name}).exec()
+  console.log(duplicate)
+  if(duplicate) return {error:"Same username is taken.\n Please consider a different username"}
   
   try {
     const hashedPassword = await bcrypt.hash(result.data.password, 10);
