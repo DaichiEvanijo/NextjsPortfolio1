@@ -25,7 +25,8 @@ export const deleteImage = async (url: string, id:string) => {
       // deleting images in Cloudinary
       const parts = url.split("/");
       const publicIdWithExtension = parts.slice(parts.indexOf("upload") + 1).join("/");
-      const publicId = publicIdWithExtension.split(".").slice(0, -1).join(".");
+      const publicId = publicIdWithExtension.split(".").slice(0, -1).join(".").split("/").slice(1).join("/");;
+      console.log(publicId)
       await cloudinary.uploader.destroy(publicId);
       await post.save()
 
