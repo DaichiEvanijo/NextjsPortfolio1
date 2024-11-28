@@ -1,4 +1,5 @@
 import Button from "@/components/elements/Button";
+import Section from "@/components/elements/Section";
 import UserDeleteButton from "@/features/users/UserDeleteButton";
 import { getAllUsers } from "@/lib/functions/fetchDB/fetchUser";
 import Link from "next/link";
@@ -7,7 +8,7 @@ const Admin = async () => {
   const users = await getAllUsers();
 
   return (
-    <section className="min-h-[calc(100vh-144px)] flex flex-col items-center justify-start p-5 gap-3 overflow-y-auto">
+    <Section className="max-w-xl text-center space-y-4">
       <h2 className="text-3xl">Admin Page</h2>
       <ol>
         {users.map((user) => {
@@ -25,7 +26,7 @@ const Admin = async () => {
           <Button type="button">Home</Button>
         </Link>
       </div>
-    </section>
+    </Section>
   );
 };
 
