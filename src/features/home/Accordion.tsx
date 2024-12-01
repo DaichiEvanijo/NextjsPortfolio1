@@ -23,7 +23,7 @@ const Accordion = () => {
       <div className="flex flex-col text-xl text-center">
           Here is the list of languages and topics that I have learned and used until now
       </div>
-      <ol ref={ref} className={`p-4 bg-gradient-to-r from-blue-100 via-yellow-100 to-blue-100 rounded-2xl shadow-xl ${isLoaded[0]? "animate-fromRight":null}`}>
+      <ol ref={ref} className={`p-4 bg-gradient-to-r from-blue-100 via-yellow-100 to-blue-100 rounded-2xl shadow-xl ${isLoaded[0]? "animate-fromRight":"opacity-0"}`}>
         {AccordionData.map((data, index) => {
           return (
             <li key={index} className="border border-slate-200 rounded-xl p-2">

@@ -15,11 +15,11 @@ const Caption = () => {
 
   return (
     <>
-      <h2 ref={ref1} className={`text-3xl text-center bg-gradient-to-r from-slate-400 via-yellow-200 to-yellow-500  text-transparent bg-clip-text md:hidden whitespace-pre-wrap ${isLoaded[0] ? "animate-fromBelow":null}`}>{`Hello !! My name is\nDaichi Koyanagi`}</h2>
-      <h2 ref={ref2} className={`text-3xl text-center bg-gradient-to-r from-slate-400 via-yellow-200 to-yellow-500  text-transparent bg-clip-text hidden md:flex ${isLoaded[1] ? "animate-fromBelow":null}`}>
+      <h2 ref={ref1} className={`text-3xl text-center bg-gradient-to-r from-slate-400 via-yellow-200 to-yellow-500  text-transparent bg-clip-text md:hidden whitespace-pre-wrap ${isLoaded[0] ? "animate-fromBelow":"opacity-0"}`}>{`Hello !! My name is\nDaichi Koyanagi`}</h2>
+      <h2 ref={ref2} className={`text-3xl text-center bg-gradient-to-r from-slate-400 via-yellow-200 to-yellow-500  text-transparent bg-clip-text hidden md:flex  ${isLoaded[1] ? "animate-fromBelow":"opacity-0" }`}>
         Hello !! My name is Daichi Koyanagi
       </h2>
-      <p ref={ref3} className={`text-center text-2xl ${isLoaded[2] ? "animate-fromBelow":null}`}>
+      <p ref={ref3} className={`text-center text-2xl ${isLoaded[2] ? "animate-fromBelow":"opacity-0"}`}>
         I fell in love with web development since about 2 years ago and have
         created a couple of portfolios
         <FaLaptop className="inline ml-2" />

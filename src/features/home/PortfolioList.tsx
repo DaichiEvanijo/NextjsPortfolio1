@@ -13,7 +13,7 @@ const PortfolioList = () => {
   
   return (
     <ol  className={"list-decimal list-inside space-y-4"}>
-      <li ref={ref1} className={`${isLoaded[0] ? "animate-fromLeft":null}`}>
+      <li ref={ref1} className={`${isLoaded[0] ? "animate-fromLeft":"opacity-0"}`}>
         <p>
           Next.js (App Router) Next-Auth full-stack Blogs/E-commerce website
           using Typescript/React/Tailwind CSS (E-commerce Components with Stripe
@@ -30,7 +30,7 @@ const PortfolioList = () => {
           </Button>
         </div>
       </li>
-      <li ref={ref2} className={`${isLoaded[1] ? "animate-fromLeft":null}`}>
+      <li ref={ref2} className={`${isLoaded[1] ? "animate-fromLeft":"opacity-0"}`}>
         <p>
           MERN full-stack post site with JWT Authorization/Authentication with
           Typesript managed by Redux toolkit\n**Check README.md for login
@@ -63,7 +63,7 @@ const PortfolioList = () => {
           </Button>
         </div>
       </li>
-      <li ref={ref3} className={`${isLoaded[2] ? "animate-fromLeft":null}`}>
+      <li ref={ref3} className={`${isLoaded[2] ? "animate-fromLeft":"opacity-0"}`}>
         <p>
           Mini e-commerce website by using React/Typescript/Tailwind CSS wtih
           useContext state management
