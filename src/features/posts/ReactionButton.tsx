@@ -53,7 +53,7 @@ const ReactionButton = ({ post }: { post: PostType }) => {
       <Button variant="icon" onClick={clientAction}>{optimisticState.reactions}🧡</Button>
       {optimisticState.reactedUsers.length === 1 ? (
         <small>{`${optimisticState.reactedUsers[0]} liked`}</small>
-      ) : post.reactedUsers.length === 2 ? (
+      ) : optimisticState.reactedUsers.length === 2 ? (
         <small>{`${optimisticState.reactedUsers[0]} and ${optimisticState.reactedUsers[1]} liked`}</small>
       ) : optimisticState.reactedUsers.length > 2 ? (
         <small>{`${optimisticState.reactedUsers[0]},${optimisticState.reactedUsers[1]} and others liked`}</small>
