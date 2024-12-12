@@ -1,5 +1,6 @@
 import Image, { ImageProps } from "next/image";
 import { getPlaiceholder } from "plaiceholder";
+import path from 'path';
 import fs from "node:fs/promises";
 import { ProductType } from "@/lib/types/ProductType";
 
@@ -12,7 +13,9 @@ const ProductImage = async ({
 }: ProductImageProps) => {
   const { className, width, height, sizes } = props;
 
-  const buffer = await fs.readFile(`./public/products/${product.name}.jpg`);
+  // const buffer = await fs.readFile(`./public/products/${product.name}.jpg`);
+  const filePath = path.join(process.cwd(), 'public', 'products', `${product.name}.jpg`);
+  const buffer = await fs.readFile(filePath);
   const { base64 } = await getPlaiceholder(buffer);
 
 
