@@ -30,17 +30,22 @@ export const POST = async (request: NextRequest) => {
         // 決済後の処理（例: データベース更新、メール送信など）
         // ①Thank you for purchase email with Resend 
         const resend = new Resend(process.env.RESEND_API_KEY)
-        resend.emails.send({
-          from:"Daichi Koyanagi <onboarding@resend.dev>",
-          to: session.customer_details?.email as string,
-          replyTo:"takanogi2468@gmail.com",
-          subject:"Thank you for the purchase",
-          // html:` <h1>Thank you for your purchase!</h1>
-          //       <p>Your order is confirmed and will be processed shortly.</p>
-          //       <p>If you have any questions, please contact our support team.</p>`,
-          // or
-          react:React.createElement(ConformationEmail),
-        })
+        try{
+          await resend.emails.send({
+            from:"Daichi Koyanagi <onboarding@resend.dev>",
+            to: session.customer_details?.email as string,
+            replyTo:"takanogi2468@gmail.com",
+            subject:"Thank you for the purchase",
+            // html:` <h1>Thank you for your purchase!</h1>
+            //       <p>Your order is confirmed and will be processed shortly.</p>
+            //       <p>If you have any questions, please contact our support team.</p>`,
+            // or
+            react:React.createElement(ConformationEmail),
+          })
+        }catch(err){
+          console.error("Failed to send email:", err);
+          return NextResponse.json({ error: `Email error: ${err}` }, { status: 400 });
+        }
  
         break;
 
@@ -51,7 +56,6 @@ export const POST = async (request: NextRequest) => {
     // Webhook 通知を受け取ったことを Stripe に通知
     return NextResponse.json({ received: true });
   } catch (err) {
-    console.error(`Webhook error: ${err}`);
     return NextResponse.json({ error: "Webhook error" }, { status: 400 });
   }
 };
