@@ -56,7 +56,7 @@ export const POST = async (request: NextRequest) => {
     // Webhook 通知を受け取ったことを Stripe に通知
     return NextResponse.json({ received: true });
   } catch (err) {
-    return NextResponse.json({ error: "Webhook error" }, { status: 400 });
+    return NextResponse.json({ error: `Webhook error ${err}` }, { status: 400 });
   }
 };
 
