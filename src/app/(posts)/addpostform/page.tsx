@@ -12,20 +12,17 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-
-
 const AddPostForm = () => {
   const router = useRouter();
-  
+
   const { data: session, status } = useSession();
 
-  const {previewUrls, handleFileChange} = useImagePreview()
+  const { previewUrls, handleFileChange } = useImagePreview();
 
   const clientAction = async (formData: FormData) => {
     const confirmed = confirm("Are you sure you would like to post ?");
     if (confirmed) {
       if (status === "authenticated" && session) {
-
         const response = await addPost(formData, session.user.provider);
         if (response?.message) {
           toast.error(response.message);
@@ -37,7 +34,6 @@ const AddPostForm = () => {
       }
     }
   };
-
 
   return (
     <SectionForForm h2Text="Create Post">
@@ -57,19 +53,15 @@ const AddPostForm = () => {
           required
           labelText="Title:"
         />
-        <Textarea
-          name="body"
-          required
-          labelText="Content:"
-        />
+        <Textarea name="body" required labelText="Content:" />
         <Input
-        type="file"
-        name="images"
-        id="postImages1"
-        labelText="Upload Image 1:"
-        accept="image/*"
-        onChange={(e) => handleFileChange(0, e)}
-        className="w-[50%]"
+          type="file"
+          name="images"
+          id="postImages1"
+          labelText="Upload Image 1:"
+          accept="image/*"
+          onChange={(e) => handleFileChange(0, e)}
+          className="w-[50%]"
         />
         <Input
           type="file"
@@ -80,10 +72,15 @@ const AddPostForm = () => {
           onChange={(e) => handleFileChange(1, e)}
           className="w-[50%]"
         />
-        {previewUrls.length >0 && (<div className="flex flex-row gap-2">
-          <PreviewImages previewUrls={previewUrls}/>
-        </div>)}
-         <span className=" leading-4 text-red-400">* You can upload 2 images at maximum (less than 800KB per image). Click upload button again to change your image to be uploaded</span>
+        {previewUrls.length > 0 && (
+          <div className="flex flex-row gap-2">
+            <PreviewImages previewUrls={previewUrls} />
+          </div>
+        )}
+        <span className=" leading-4 text-red-400">
+          * You can upload 2 images at maximum (less than 800KB per image).
+          Click upload button again to change your image to be uploaded
+        </span>
         <Button type="submit">Save Post</Button>
       </Form>
     </SectionForForm>
@@ -91,9 +88,3 @@ const AddPostForm = () => {
 };
 
 export default AddPostForm;
-
-
-
-
-
-

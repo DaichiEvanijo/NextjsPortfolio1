@@ -50,16 +50,20 @@ const ReactionButton = ({ post }: { post: PostType }) => {
 
   return (
     <div className="flex gap-2 items-center">
-      <Button variant="icon" onClick={clientAction}>{optimisticState.reactions}🧡</Button>
-      {optimisticState.reactedUsers.length === 1 ? (
-        <small>{`${optimisticState.reactedUsers[0]} liked`}</small>
-      ) : optimisticState.reactedUsers.length === 2 ? (
-        <small>{`${optimisticState.reactedUsers[0]} and ${optimisticState.reactedUsers[1]} liked`}</small>
-      ) : optimisticState.reactedUsers.length > 2 ? (
-        <small>{`${optimisticState.reactedUsers[0]},${optimisticState.reactedUsers[1]} and others liked`}</small>
-      ) : (
-        ""
-      )}
+      <Button variant="reactionButton" onClick={clientAction} className="flex gap-1">
+        <small>{optimisticState.reactions}</small>
+        <small>🧡</small>
+      </Button>
+      
+      <small className="text-xs">
+        {optimisticState.reactedUsers.length === 1
+          ? `${optimisticState.reactedUsers[0]} liked`
+          : optimisticState.reactedUsers.length === 2
+          ? `${optimisticState.reactedUsers[0]} and ${optimisticState.reactedUsers[1]} liked`
+          : optimisticState.reactedUsers.length > 2
+          ? `${optimisticState.reactedUsers[0]}, ${optimisticState.reactedUsers[1]} and others liked`
+          : ""}
+      </small>
     </div>
   );
 };

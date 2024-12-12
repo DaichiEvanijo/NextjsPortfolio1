@@ -2,9 +2,11 @@ import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
 const DynamicImage = ({
+  url,
+  sizes,
   ...props
 }: React.ComponentProps<"div"> & { url: string; sizes: string }) => {
-  const { className, url, sizes, ...others } = props;
+  const { className, ...others } = props;
 
   return (
     <>

@@ -9,6 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { SetStateAction, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+
+import { useCart } from "@/context/CartProvider";
+
+
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
@@ -35,7 +40,7 @@ const Header = () => {
           </ul>
         </nav>
         <nav>
-          <ul className="hidden sm:flex justify-center items-center gap-4">
+          <ul className="hidden sm:flex justify-center items-center gap-5 ">
             <NavbarList session={session} isOpen={isOpen} setOpen={setOpen} />
           </ul>
         </nav>
@@ -58,6 +63,9 @@ type NavbarListProps = {
   setOpen: React.Dispatch<SetStateAction<boolean>>;
 };
 const NavbarList = ({ session, isOpen, setOpen }: NavbarListProps) => {
+
+  const {totalItems} = useCart()
+
   return (
     <>
       <li onClick={() => isOpen && setOpen((prev) => !prev)} className="nav-item">
@@ -68,6 +76,12 @@ const NavbarList = ({ session, isOpen, setOpen }: NavbarListProps) => {
       </li>
       <li onClick={() => isOpen && setOpen((prev) => !prev)} className="nav-item">
         <Link href="/productslist">Merch</Link>
+      </li>
+      <li onClick={() => isOpen && setOpen((prev) => !prev)} className="nav-item">
+        <div className="relative">
+          <Link href="/cart" ><FaShoppingCart /></Link>
+          {totalItems > 0 && <span className="absolute text-sm -top-2 -right-2.5">{totalItems}</span>}
+        </div>
       </li>
       {session && session.user.role === 5150 ? (
         <li onClick={() => isOpen && setOpen((prev) => !prev)} className="nav-item">

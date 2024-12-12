@@ -6,11 +6,15 @@ import { twMerge } from 'tailwind-merge'
 export const btnStyles = cva(["transition duration-500 ease-in-out"], {
   variants:{
     variant:{
-      default:["hover:opacity-60", "text-lime-500","disabled:text-slate-300","border","border-lime-500", "rounded"],
-      disabled:["hover:opacity-60", "text-slate-200","border","border-lime-500", "rounded"],
-      yellow:["text-yellow-300", "border", "border-white", "hover:border","hover:border-yellow-300", "rounded-xl" ],
-      icon:["hover:opacity-60", "text-lime-500", "border", "border-slate-200", "rounded"],
-      deleteButton:["hover:opacity-50", "text-lime-500", "text-xs"],
+      // for buttons for Pagination
+      default:["hover:opacity-60", "text-lime-400","disabled:text-slate-300"],
+      disabled:["text-slate-300"],
+      // for buttons in blog related pages
+      yellowButton:["text-yellow-300", "border", "border-white","rounded-xl", "hover:border-yellow-300"],
+      reactionButton:["hover:opacity-60", "text-lime-400", "border", "border-slate-200", "rounded"],
+      deleteXButton:["hover:opacity-60", "text-lime-400", "text-xs"],
+      // for buttons in Merch related pages
+      cartButton:["hover:opacity-60", "text-lime-400","text-sm"],
     }, 
     size:{
       default:["p-1"],

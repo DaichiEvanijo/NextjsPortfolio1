@@ -19,7 +19,6 @@ export const generateMetadata = async ({ params }: SinglePostPageProps) => {
   };
 };
 
-
 export const generateStaticParams = async () => {
   try {
     await connectToDatabase();
@@ -32,8 +31,6 @@ export const generateStaticParams = async () => {
     throw new Error(`failed to generate generic static params, ${err}`);
   }
 };
-
-
 
 type SinglePostPageProps = {
   params: Promise<{ id: string }>;

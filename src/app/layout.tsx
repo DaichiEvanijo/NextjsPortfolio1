@@ -4,6 +4,7 @@ import AuthProvider from "../context/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
+import { CartContextProvider } from "@/context/CartProvider";
 
 export const metadata: Metadata = {
   title: "Next.js App",
@@ -18,14 +19,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="font-bold text-lg">
       <head>
-       <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
         <AuthProvider>
-          <Header/>
-          {children}
-          <Footer/>
-          <Toaster position="top-right"/>
+          <CartContextProvider>
+            <Header />
+            {children}
+            <Footer />
+            <Toaster position="top-right" />
+          </CartContextProvider>
         </AuthProvider>
       </body>
     </html>

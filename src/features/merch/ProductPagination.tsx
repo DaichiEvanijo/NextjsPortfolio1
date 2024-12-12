@@ -1,19 +1,20 @@
 import Button from "@/components/elements/Button";
-import { PostType } from "@/lib/types/PostType";
+import { ProductType } from "@/lib/types/ProductType";
 import Link from "next/link";
 
-type PaginationProps = {
+type ProductPaginationProps = {
+category?:string,
 search?:string,  
 page:number, 
-searchedPosts:PostType[]
+searchedProducts:ProductType[] 
 }
 
-const Pagination = ({search, page, searchedPosts}:PaginationProps) => {
+const ProductPagination = ({category,search, page, searchedProducts,}:ProductPaginationProps) => {
 
   const pageNumbers=[]
   const offsetNumber = 3
   for (let i = page-offsetNumber; i<= page+offsetNumber; i++){
-    if(i>=1 && i<= Math.ceil(searchedPosts.length / 4) ){
+    if(i>=1 && i<= Math.ceil(searchedProducts.length / 6) ){
       pageNumbers.push(i)
     }
   }
@@ -22,10 +23,11 @@ const Pagination = ({search, page, searchedPosts}:PaginationProps) => {
     <div className="flex justify-center items-center gap-3">
       <Button type="button" variant={page ===1 ? "disabled":"default"}><Link
         href={{
-          pathname: "/postslist",
+          pathname: "/productslist",
           query: {
-            ...(search ? { search } : {}),
             page: page > 1 ? page - 1 : 1,
+            ...(category ? { category } : {}),
+            ...(search ? { search } : {}),
           },
         }} 	
       >
@@ -34,23 +36,24 @@ const Pagination = ({search, page, searchedPosts}:PaginationProps) => {
       {pageNumbers.map((number, i) => (
         <Link key={i} 
         href={{
-          pathname: "/postslist",
+          pathname: "/productslist",
           query: {
-            ...(search ? { search } : {}),
             page: number,
+            ...(category ? { category } : {}),
+            ...(search ? { search } : {}),
           },
         }} 	
       >
         {number}
       </Link>
       ))}
-      <Button type="button" variant={page === Math.ceil(searchedPosts.length / 4) ? "disabled":"default"}><Link
+      <Button type="button" variant={page === Math.ceil(searchedProducts.length / 6) ? "disabled":"default"}><Link
         href={{
-          pathname: "/postslist",
+          pathname: "/productslist",
           query: {
+            page:page === Math.ceil(searchedProducts.length / 6) ? page : page + 1,
+            ...(category ? { category } : {}),
             ...(search ? { search } : {}),
-            page:
-              page === Math.ceil(searchedPosts.length / 4) ? page : page + 1,
           },
         }} 
       >
@@ -60,4 +63,4 @@ const Pagination = ({search, page, searchedPosts}:PaginationProps) => {
   );
 };
 
-export default Pagination;
+export default ProductPagination;

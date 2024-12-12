@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 
-const Search = ({search, page}:{search?:string, page:number}) => {
+const PostSearch = ({search, page}:{search?:string, page:number}) => {
   const [searchText, setSearchText] = useState(search)
   const debouncedSearch = useDebounce(searchText, 500)
   const router = useRouter()
@@ -28,4 +28,4 @@ const Search = ({search, page}:{search?:string, page:number}) => {
   )
 }
 
-export default Search
+export default PostSearch

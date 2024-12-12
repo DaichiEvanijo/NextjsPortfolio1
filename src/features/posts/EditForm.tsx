@@ -87,10 +87,16 @@ const EditForm = ({ post }: EditFormProps) => {
           className="w-[50%]"
         />
         <div className="flex flex-row gap-2">
-          <EditPostImageList post={post} imageDeleteAction={imageDeleteAction}/>
+          <EditPostImageList
+            post={post}
+            imageDeleteAction={imageDeleteAction}
+          />
           <PreviewImages previewUrls={previewUrls} />
         </div>
-        <span className=" leading-4 text-red-400">* You can upload 2 images at maximum (less than 800KB per image). Click upload button again to change your image to be uploaded</span>
+        <span className=" leading-4 text-red-400">
+          * You can upload 2 images at maximum (less than 800KB per image).
+          Click upload button again to change your image to be uploaded
+        </span>
         <div className="flex gap-2">
           <Button type="submit">Save Post</Button>
           <DeleteButton id={post._id} />
@@ -103,32 +109,34 @@ const EditForm = ({ post }: EditFormProps) => {
 
 export default EditForm;
 
-
-
-
 type EditPostImageListProps = {
-  post:PostType, 
-  imageDeleteAction:(url:string) => void
-}
-const EditPostImageList = ({post, imageDeleteAction}:EditPostImageListProps) => {
+  post: PostType;
+  imageDeleteAction: (url: string) => void;
+};
+const EditPostImageList = ({
+  post,
+  imageDeleteAction,
+}: EditPostImageListProps) => {
   return (
     <>
       {post.imageUrls.length > 0 &&
         post.imageUrls.map((url, index) => (
-          <div  key={index} className="relative">
-            <DynamicImage url={url} className="w-[100px] h-[100px]" sizes="100px"/>
+          <div key={index} className="relative">
+            <DynamicImage
+              url={url}
+              className="w-[100px] h-[100px]"
+              sizes="100px"
+            />
             <Button
               type="button"
-              variant="deleteButton"
+              variant="deleteXButton"
               onClick={() => imageDeleteAction(url)}
               className="absolute -top-1 -right-2 border-none"
-              >
+            >
               X
             </Button>
           </div>
         ))}
-      </>
-  )
-}
-
-
+    </>
+  );
+};

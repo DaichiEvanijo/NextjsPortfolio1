@@ -18,12 +18,12 @@ const AddPostButton = () => {
     <>
       {session ? (
         <div className="flex flex-col gap-4 ">
-          <Button variant="yellow" size="yellowButton"><Link href="/addpostform">Create Post</Link></Button>      
+          <Button variant="yellowButton" size="yellowButton"><Link href="/addpostform">Create Post</Link></Button>      
         </div>
       ) : (
         <div className="flex flex-col items-center gap-4 ">
           <p className="text-xl  bg-gradient-to-r from-lime-200  to-yellow-500  text-transparent bg-clip-text">Login to create and react with posts</p>
-          <Button variant="yellow" size="yellowButton" onClick={() => signIn(undefined, { callbackUrl: "/postslist" })}>
+          <Button variant="yellowButton" size="yellowButton" onClick={() => signIn(undefined, { callbackUrl: "/postslist" })}>
               Login
           </Button >
         </div>

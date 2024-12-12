@@ -1,5 +1,5 @@
-import Pagination from "@/features/posts/Pagination";
-import Search from "@/features/posts/Search";
+import Pagination from "@/features/posts/PostPagination";
+import Search from "@/features/posts/PostSearch";
 import Link from "next/link";
 import ReactionButton from "@/features/posts/ReactionButton";
 import {
@@ -25,7 +25,9 @@ const PostsList = async ({ searchParams }: PostsListProps) => {
   const awaitedPage = awaitedParams.page;
   const page = awaitedPage ? Number(awaitedPage) : 1;
 
-  const search: string | undefined = awaitedParams.search ? (awaitedParams.search as string): undefined;
+  const search: string | undefined = awaitedParams.search
+    ? (awaitedParams.search as string)
+    : undefined;
 
   const [posts, searchedPosts] = await Promise.all([
     getCachedPostsforPagination(page, 4, search),
@@ -36,24 +38,22 @@ const PostsList = async ({ searchParams }: PostsListProps) => {
 
   return (
     <Section className="flex flex-col gap-12 p-12">
-
-      <ScrollToTop page={page} search={search}/>
+      <ScrollToTop page={page} search={search} />
 
       {/* Hero section start*/}
       <section className="flex flex-col justify-center items-center gap-24 py-24 text-center ">
-        <p className="text-3xl bg-gradient-to-r from-lime-200  to-yellow-500  text-transparent bg-clip-text">Post your thoughts about the cities you visited !</p>
-        <AddPostButton/>
+        <p className="text-3xl bg-gradient-to-r from-lime-200  to-yellow-500  text-transparent bg-clip-text p-3">
+          Post your thoughts about the cities you visited !
+        </p>
+        <AddPostButton />
       </section>
       {/* Hero section end*/}
 
-
-      <div className="flex flex-row justify-evenly items-center gap-3">
+      <div className="flex sm:flex-row  justify-evenly items-center gap-3">
         <Search search={search} page={page} />
         {/* このpropsは単語を入れてseachした後にページをrefreshするとSeachコンポのuseEffectにより/postslistになってしまうので、searchPramsから取得している(= サーバーから取得している)searchをSeachコンポのuseStateのinit valueとすれば、client側(Seachコンポ)でリフレッシュしても値はinit valueであるであるsearchになるので、searchbarから文字が消えない  page propsはsearchbarへ単語を入れて検索し、またpaginationをクリックした後(即ちurlに&page=1などが加わった後、ページリフレッシュした後もそのpage数を維持できるようにするため*/}
-        <Link href="/userslist">Author&apos;s list</Link>
+        <Link href="/userslist" className="text-center">Author&apos;s list</Link>
       </div>
-
-
 
       {posts && posts.length ? (
         <>
@@ -77,13 +77,13 @@ const PostsList = async ({ searchParams }: PostsListProps) => {
                         />
                       ))}
                   </div>
-                  <div className="flex gap-2 items-center flex-wrap">
+                  <div className="flex gap-2 items-center flex-wrap ">
                     <Button type="button">
                       <Link href={`/postslist/${post._id}`} prefetch={true}>
                         View Post
                       </Link>
                     </Button>
-                    <span>{`by ${post.name}`}</span>
+                    <span><small>{`by ${post.name}`}</small></span>
                     <TimeAgo
                       createdAt={post.createdAt}
                       updatedAt={post.updatedAt}
@@ -95,8 +95,6 @@ const PostsList = async ({ searchParams }: PostsListProps) => {
             })}
           </ul>
 
-
-
           <Pagination
             search={search}
             page={page}
@@ -105,7 +103,9 @@ const PostsList = async ({ searchParams }: PostsListProps) => {
           {/* こちらのpropsも同じ理屈 */}
         </>
       ) : (
-        <p className="text-2xl text-center">Your search does not match any post !!</p>
+        <p className="text-2xl text-center">
+          Your search does not match any post !!
+        </p>
       )}
     </Section>
   );
