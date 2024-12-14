@@ -1,19 +1,16 @@
-import 'server-only'
+import "server-only";
 
-import { ProductType } from '@/lib/types/ProductType';
+import { ProductType } from "@/types/ProductType";
 import Product from "@/models/Product";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import { unstable_cache } from "next/cache";
-
-
-
 
 const getProductsforPagination = async (
   page = 1,
   limit = 10,
-  category:string | undefined,
-  search: string | undefined,
-):Promise<ProductType[]> => {
+  category: string | undefined,
+  search: string | undefined
+): Promise<ProductType[]> => {
   try {
     await connectToDatabase();
 
@@ -27,13 +24,13 @@ const getProductsforPagination = async (
       ];
     }
     if (category) {
-      query.category = category; 
+      query.category = category;
     }
 
     const products = await Product.find(query)
       .limit(limit)
-      .skip((page - 1) * limit)
-      const serializedProducts:ProductType[] = products.map((product) => {
+      .skip((page - 1) * limit);
+    const serializedProducts: ProductType[] = products.map((product) => {
       return {
         _id: product._id.toString(),
         name: product.name,
@@ -48,19 +45,23 @@ const getProductsforPagination = async (
 };
 
 export const getCachedProductsforPagination = unstable_cache(
-  (page: number, limit: number, category: string | undefined, search: string | undefined) =>{
-    return getProductsforPagination(page, limit, category, search)
+  (
+    page: number,
+    limit: number,
+    category: string | undefined,
+    search: string | undefined
+  ) => {
+    return getProductsforPagination(page, limit, category, search);
   }
 );
 
-
-
-
-
-const getProductsForSearchbar = async (category: string | undefined, search: string | undefined) :Promise<ProductType[]>=> {
+const getProductsForSearchbar = async (
+  category: string | undefined,
+  search: string | undefined
+): Promise<ProductType[]> => {
   try {
     await connectToDatabase();
-    
+
     /* eslint-disable @typescript-eslint/no-explicit-any */
     const query: Record<string, any> = {};
     /* eslint-enable @typescript-eslint/no-explicit-any */
@@ -71,11 +72,11 @@ const getProductsForSearchbar = async (category: string | undefined, search: str
       ];
     }
     if (category) {
-      query.category = category; 
+      query.category = category;
     }
 
     const products = await Product.find(query);
-    const serializedProducts:ProductType[] = products.map((product) => {
+    const serializedProducts: ProductType[] = products.map((product) => {
       return {
         _id: product._id.toString(),
         name: product.name,
@@ -85,23 +86,24 @@ const getProductsForSearchbar = async (category: string | undefined, search: str
     });
     return serializedProducts;
   } catch (err) {
-    throw new Error(`failed to fetch products for searchbar and category, ${err}`);
+    throw new Error(
+      `failed to fetch products for searchbar and category, ${err}`
+    );
   }
 };
-export const getCachedProductsforSearchbar = unstable_cache((category: string | undefined, search: string | undefined) => getProductsForSearchbar(category,search));
+export const getCachedProductsforSearchbar = unstable_cache(
+  (category: string | undefined, search: string | undefined) =>
+    getProductsForSearchbar(category, search)
+);
 
-
-
-
-
-const getIndividualProducts = async (id: string) :Promise<ProductType>=> {
+const getIndividualProducts = async (id: string): Promise<ProductType> => {
   try {
     await connectToDatabase();
     const product = await Product.findOne({ _id: id });
     if (!product) {
       throw new Error(`Product with id ${id} not found`);
     }
-    const serializedProduct:ProductType= {
+    const serializedProduct: ProductType = {
       _id: product._id.toString(),
       name: product.name,
       category: product.category,
@@ -115,7 +117,3 @@ const getIndividualProducts = async (id: string) :Promise<ProductType>=> {
 export const getCachedIndividualProduct = unstable_cache((id: string) =>
   getIndividualProducts(id)
 );
-
-
-
-

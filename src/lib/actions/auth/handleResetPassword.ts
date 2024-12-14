@@ -1,7 +1,7 @@
 "use server";
 
-import { connectToDatabase } from "@/utils/mogoDButil/db";
-import { passwordResetSchema } from "../../types/zodtypes";
+import { connectToDatabase } from "@/lib/config/mongodb";
+import { passwordResetSchema } from "../../../types/zodtypes";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
 import { getErrorMessage } from "../../functions/getErrorMessage";
@@ -35,7 +35,6 @@ export const handleResetPassword = async (
       message: "invalid or expired token was sent",
     };
 
-    
   try {
     const hashedPassword = await bcrypt.hash(result.data.password, 10);
     foundUser.password = hashedPassword;

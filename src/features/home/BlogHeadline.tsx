@@ -1,7 +1,7 @@
 import Button from "@/components/elements/Button";
 import DynamicImage from "@/components/elements/DynamicImage";
 import TimeAgo from "@/components/elements/TimeAgo";
-import { PostType } from "@/lib/types/PostType";
+import { PostType } from "@/types/PostType";
 import Link from "next/link";
 
 const BlogHeadline = ({ posts }: { posts: PostType[] }) => {

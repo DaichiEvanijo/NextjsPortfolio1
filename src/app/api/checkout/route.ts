@@ -1,20 +1,17 @@
-import { CartType } from "@/lib/types/CartType";
+import { CartType } from "@/types/CartType";
 import { NextRequest, NextResponse } from "next/server";
 
-import Stripe from 'stripe';
+import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET as string);
-
 
 const getActiveProducts = async () => {
   const products = await stripe.products.list();
   const availableProducts = products.data.filter(
-    product => product.active === true
+    (product) => product.active === true
   );
   return availableProducts;
 };
 // 上のコードでstripeのdashboardのarchiveの商品などを取り除いた、active (available)の商品を取り出している
-
-
 
 export const POST = async (request: NextRequest) => {
   // request.method, request.headers,request.body, request.url, request.query, request.cookiesなどが含まれる
@@ -24,11 +21,12 @@ export const POST = async (request: NextRequest) => {
   try {
     for (const productInCart of cart) {
       const isAlreadyInStripe = activeProducts.find(
-        product => product.name.toLowerCase() === productInCart.name.toLowerCase()
+        (product) =>
+          product.name.toLowerCase() === productInCart.name.toLowerCase()
       );
       // 上のコードはすでにstripeのproductsリストに商品がある時は新たに商品の欄を作らずに(二重になるので)数量を増やすようにするため
       if (!isAlreadyInStripe) {
-       await stripe.products.create({
+        await stripe.products.create({
           name: productInCart.name,
           default_price_data: {
             unit_amount: productInCart.price * 100,
@@ -48,12 +46,14 @@ export const POST = async (request: NextRequest) => {
 
   activeProducts = await getActiveProducts();
 
-  const purchasingProducts:Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+  const purchasingProducts: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
   for (const productInCart of cart) {
     const isAlreadyInStripe = activeProducts.find(
-      product => product.name.toLowerCase() === productInCart.name.toLowerCase()
+      (product) =>
+        product.name.toLowerCase() === productInCart.name.toLowerCase()
     );
-    if (isAlreadyInStripe) { //←これは冗長
+    if (isAlreadyInStripe) {
+      //←これは冗長
       purchasingProducts.push({
         price: isAlreadyInStripe.default_price as string,
         quantity: productInCart.quantity,
@@ -76,9 +76,9 @@ export const POST = async (request: NextRequest) => {
     cancel_url: "https://nextjs-portfolio1-weld.vercel.app/cart/cancel",
     // cancel_url: "http://localhost:3000/cart/cancel",
     shipping_address_collection: {
-      allowed_countries: ['US', 'DE', 'JP'],
+      allowed_countries: ["US", "DE", "JP"],
     },
-    billing_address_collection: 'required', 
+    billing_address_collection: "required",
     // shipping_address_collectionはsessionで決済が完了したときにwebhook fileのconst event = stripe.webhook.constructEventのevent.data.object.shipping_detailsで取得できる
     // metadata: {
     //   orderId: 'order_98765',

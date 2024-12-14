@@ -5,7 +5,7 @@ import Input from "@/components/elements/Input";
 import PasswordInput from "@/components/elements/PasswordInput";
 import SectionForForm from "@/components/elements/SectionForForm";
 import { handleRegistration } from "@/lib/actions/auth/handleRegistration";
-import { registerSchema } from "@/lib/types/zodtypes";
+import { registerSchema } from "@/types/zodtypes";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -21,7 +21,7 @@ const Register = () => {
     if (!result.success) {
       let errMsg = "";
       result.error.issues.forEach((issue) => {
-        errMsg += `${issue.path[0]}:\n ${issue.message}\n\n`
+        errMsg += `${issue.path[0]}:\n ${issue.message}\n\n`;
       });
       toast.error(errMsg);
       return;
@@ -31,11 +31,11 @@ const Register = () => {
       toast.error(response.error);
     } else {
       toast.success("registration was successful !!");
-      setIsSubmitted(true)
+      setIsSubmitted(true);
     }
   };
 
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <SectionForForm h2Text="Register">
@@ -54,19 +54,24 @@ const Register = () => {
           id="matchPwd"
           labelText="Confirm Password:"
         />
-        <Button type="submit" disabled={isSubmitted}>Sign up</Button>
+        <Button type="submit" disabled={isSubmitted}>
+          Sign up
+        </Button>
       </Form>
       <div>
         <span className="me-6">Already registered ?</span>
-        <Button type="button"><Link href="/api/auth/signin">Log in</Link></Button>
+        <Button type="button">
+          <Link href="/api/auth/signin">Log in</Link>
+        </Button>
       </div>
       <div>
         <span className="me-6">Go back to Home</span>
-        <Button type="button"><Link href="/">Home</Link></Button>
+        <Button type="button">
+          <Link href="/">Home</Link>
+        </Button>
       </div>
     </SectionForForm>
   );
 };
 
 export default Register;
-

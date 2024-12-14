@@ -1,4 +1,4 @@
-import { options } from "@/app/api/auth/[...nextauth]/options2";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 import Button from "@/components/elements/Button";
 import DynamicImage from "@/components/elements/DynamicImage";
 import Section from "@/components/elements/Section";
@@ -6,7 +6,7 @@ import TimeAgo from "@/components/elements/TimeAgo";
 import ReactionButton from "@/features/posts/ReactionButton";
 import { getCachedIndividualPost } from "@/lib/functions/fetchDB/fetchPost";
 import Post from "@/models/Post";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 

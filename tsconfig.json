@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/api/register/routeAsAlternative.ts",
-    "src/utils/mogoDButil/db.js"
+    "src/lib/config/mongodb.js"
 , "next.config.ts"  ],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,7 @@
 "use server";
 
 import User  from "@/models/User";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import { revalidatePath } from "next/cache";
 
 

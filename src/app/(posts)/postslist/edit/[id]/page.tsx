@@ -2,7 +2,7 @@ import SectionForForm from "@/components/elements/SectionForForm";
 import EditForm from "@/features/posts/EditForm";
 import { getCachedIndividualPost } from "@/lib/functions/fetchDB/fetchPost";
 import Post from "@/models/Post";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 
 export const generateStaticParams = async () => {
   try {

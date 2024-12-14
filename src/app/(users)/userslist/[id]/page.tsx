@@ -1,9 +1,9 @@
 import { getPostsByUser } from "@/lib/functions/fetchDB/fetchPost";
-import {  getIndividualUser } from "@/lib/functions/fetchDB/fetchUser";
-import { PostType } from "@/lib/types/PostType";
-import { UserType } from "@/lib/types/UserType";
+import { getIndividualUser } from "@/lib/functions/fetchDB/fetchUser";
+import { PostType } from "@/types/PostType";
+import { UserType } from "@/types/UserType";
 import User from "@/models/User";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import Link from "next/link";
 
 export const generateStaticParams = async () => {
@@ -19,7 +19,6 @@ export const generateStaticParams = async () => {
   }
 };
 
-
 type UserPageProps = {
   params: Promise<{ id: string }>;
 };
@@ -30,7 +29,6 @@ const UserPage = async ({ params }: UserPageProps) => {
     user.name,
     user.provider
   );
-
 
   return (
     <section className="h-[calc(100vh-144px)] flex flex-col items-center justify-start p-5 gap-3 overflow-y-auto">

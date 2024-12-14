@@ -2,8 +2,8 @@
 
 import { getErrorMessage } from "@/lib/functions/getErrorMessage";
 import Post from "@/models/Post";
-import cloudinary from "@/utils/cloudinary";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import cloudinary from "@/lib/config/cloudinary";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import { revalidatePath } from "next/cache";
 
 export const deleteImage = async (url: string, id:string) => {

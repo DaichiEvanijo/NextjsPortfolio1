@@ -1,48 +1,41 @@
-import 'server-only'
+import "server-only";
 
-import { PostType } from "@/lib/types/PostType";
+import { PostType } from "@/types/PostType";
 import Post from "@/models/Post";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import { unstable_cache } from "next/cache";
 
-
-
-
-const getPostsForHeadline = async ():Promise<PostType[]> => {
-  try{
-    await connectToDatabase()
-    const posts = await Post.find().sort({createdAt:-1}).limit(3)
-    const serializedPosts:PostType[] = posts.map((post) => {
+const getPostsForHeadline = async (): Promise<PostType[]> => {
+  try {
+    await connectToDatabase();
+    const posts = await Post.find().sort({ createdAt: -1 }).limit(3);
+    const serializedPosts: PostType[] = posts.map((post) => {
       return {
         _id: post._id.toString(),
         name: post.name,
         title: post.title,
         body: post.body,
-        imageUrls:post.imageUrls,
+        imageUrls: post.imageUrls,
         reactions: post.reactions,
         reactedUsers: post.reactedUsers,
         provider: post.provider,
-        createdAt:post.createdAt,
-        updatedAt:post.updatedAt,
+        createdAt: post.createdAt,
+        updatedAt: post.updatedAt,
       };
     });
     return serializedPosts;
-  }catch(err){
-    throw new Error(`failed to fetch 3 posts for headline,${err}`)
+  } catch (err) {
+    throw new Error(`failed to fetch 3 posts for headline,${err}`);
   }
-}
+};
 
-export const getCachedPostsForHeadline = unstable_cache(getPostsForHeadline)
-
-
-
-
+export const getCachedPostsForHeadline = unstable_cache(getPostsForHeadline);
 
 const getPostsforPagination = async (
   page = 1,
   limit = 10,
   search: string | undefined
-):Promise<PostType[]> => {
+): Promise<PostType[]> => {
   try {
     await connectToDatabase();
 
@@ -61,18 +54,18 @@ const getPostsforPagination = async (
       .limit(limit)
       .skip((page - 1) * limit)
       .sort({ createdAt: -1 });
-      const serializedPosts:PostType[] = posts.map((post) => {
+    const serializedPosts: PostType[] = posts.map((post) => {
       return {
         _id: post._id.toString(),
         name: post.name,
         title: post.title,
         body: post.body,
-        imageUrls:post.imageUrls,
+        imageUrls: post.imageUrls,
         reactions: post.reactions,
         reactedUsers: post.reactedUsers,
         provider: post.provider,
-        createdAt:post.createdAt,
-        updatedAt:post.updatedAt,
+        createdAt: post.createdAt,
+        updatedAt: post.updatedAt,
       };
     });
     return serializedPosts;
@@ -86,13 +79,9 @@ export const getCachedPostsforPagination = unstable_cache(
     getPostsforPagination(page, limit, search)
 );
 
-
-
-
-
-
-
-const getPostsForSearchbar = async (search: string | undefined) :Promise<PostType[]>=> {
+const getPostsForSearchbar = async (
+  search: string | undefined
+): Promise<PostType[]> => {
   try {
     await connectToDatabase();
 
@@ -108,18 +97,18 @@ const getPostsForSearchbar = async (search: string | undefined) :Promise<PostTyp
       : {};
 
     const posts = await Post.find(query);
-    const serializedPosts:PostType[] = posts.map((post) => {
+    const serializedPosts: PostType[] = posts.map((post) => {
       return {
         _id: post._id.toString(),
         name: post.name,
         title: post.title,
         body: post.body,
-        imageUrls:post.imageUrls,
+        imageUrls: post.imageUrls,
         reactions: post.reactions,
         reactedUsers: post.reactedUsers,
         provider: post.provider,
-        createdAt:post.createdAt,
-        updatedAt:post.updatedAt,
+        createdAt: post.createdAt,
+        updatedAt: post.updatedAt,
       };
     });
     return serializedPosts;
@@ -128,31 +117,28 @@ const getPostsForSearchbar = async (search: string | undefined) :Promise<PostTyp
   }
 };
 
-export const getCachedPostsforSearchbar = unstable_cache((search: string | undefined) => getPostsForSearchbar(search));
+export const getCachedPostsforSearchbar = unstable_cache(
+  (search: string | undefined) => getPostsForSearchbar(search)
+);
 
-
-
-
-
-
-const getIndividualPost = async (id: string) :Promise<PostType>=> {
+const getIndividualPost = async (id: string): Promise<PostType> => {
   try {
     await connectToDatabase();
     const post = await Post.findOne({ _id: id });
     if (!post) {
       throw new Error(`Post with id ${id} not found`);
     }
-    const serializedPost:PostType= {
+    const serializedPost: PostType = {
       _id: post._id.toString(),
       name: post.name,
       title: post.title,
       body: post.body,
-      imageUrls:post.imageUrls,
+      imageUrls: post.imageUrls,
       reactions: post.reactions,
       reactedUsers: post.reactedUsers,
       provider: post.provider,
-      createdAt:post.createdAt,
-      updatedAt:post.updatedAt,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
     };
     return serializedPost;
   } catch (err) {
@@ -164,28 +150,25 @@ export const getCachedIndividualPost = unstable_cache((id: string) =>
   getIndividualPost(id)
 );
 
-
-
-
-
-
-
-export const getPostsByUser = async (name: string, provider: string):Promise<PostType[]> => {
+export const getPostsByUser = async (
+  name: string,
+  provider: string
+): Promise<PostType[]> => {
   try {
     await connectToDatabase();
     const posts = await Post.find({ name, provider }).sort({ createdAt: -1 });
-    const serializedPosts:PostType[]= posts.map((post) => {
+    const serializedPosts: PostType[] = posts.map((post) => {
       return {
         _id: post._id.toString(),
         name: post.name,
         title: post.title,
         body: post.body,
-        imageUrls:post.imageUrls,
+        imageUrls: post.imageUrls,
         reactions: post.reactions,
         reactedUsers: post.reactedUsers,
         provider: post.provider,
-        createdAt:post.createdAt,
-        updatedAt:post.updatedAt,
+        createdAt: post.createdAt,
+        updatedAt: post.updatedAt,
       };
     });
     return serializedPosts;
@@ -193,4 +176,3 @@ export const getPostsByUser = async (name: string, provider: string):Promise<Pos
     throw new Error(`failed to fetch posts by user:${err}`);
   }
 };
-

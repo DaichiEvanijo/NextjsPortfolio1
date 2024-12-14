@@ -1,7 +1,7 @@
 "use server";
 
-import { connectToDatabase } from "@/utils/mogoDButil/db";
-import { registerSchema } from "../../types/zodtypes";
+import { connectToDatabase } from "@/lib/config/mongodb";
+import { registerSchema } from "../../../types/zodtypes";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
 import { getErrorMessage } from "../../functions/getErrorMessage";
@@ -25,10 +25,13 @@ export const handleRegistration = async (data: handleRegistrationProps) => {
 
   await connectToDatabase();
 
-  const duplicate = await User.findOne({name:result.data.name}).exec()
-  console.log(duplicate)
-  if(duplicate) return {error:"Same username is taken.\n Please consider a different username"}
-  
+  const duplicate = await User.findOne({ name: result.data.name }).exec();
+  console.log(duplicate);
+  if (duplicate)
+    return {
+      error: "Same username is taken.\n Please consider a different username",
+    };
+
   try {
     const hashedPassword = await bcrypt.hash(result.data.password, 10);
     const newUser = await User.create({

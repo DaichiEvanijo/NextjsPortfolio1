@@ -1,6 +1,6 @@
 import { getCachedIndividualProduct } from "@/lib/functions/fetchDB/fetchProduct";
 import Section from "@/components/elements/Section";
-import { connectToDatabase } from "@/utils/mogoDButil/db";
+import { connectToDatabase } from "@/lib/config/mongodb";
 import Product from "@/models/Product";
 import ProductImage from "@/components/elements/ProductImage";
 import formatCurrency from "@/components/elements/formatCurrency";

@@ -3,7 +3,7 @@ import Button from "@/components/elements/Button";
 import Input from "@/components/elements/Input";
 import Textarea from "@/components/elements/Textarea";
 import { editPost } from "@/lib/actions/posts/editPost";
-import { PostType } from "@/lib/types/PostType";
+import { PostType } from "@/types/PostType";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import DeleteButton from "./DeleteButton";
