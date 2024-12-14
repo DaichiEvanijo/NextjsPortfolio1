@@ -16,8 +16,7 @@ const PortfolioList = () => {
       <li ref={ref1} className={`${isLoaded[0] ? "animate-fromLeft":"opacity-0"}`}>
         <p>
           Next.js (App Router) Next-Auth full-stack Blogs/E-commerce website
-          using Typescript/React/Tailwind CSS (E-commerce Components with Stripe
-          are currently under construction)
+          using Typescript/React/Tailwind CSS integrated with Stripe checkout and Resend/React-email<br/>**Check README.md for login information
         </p>
         <div className="space-x-2">
           <Button>
@@ -33,7 +32,7 @@ const PortfolioList = () => {
       <li ref={ref2} className={`${isLoaded[1] ? "animate-fromLeft":"opacity-0"}`}>
         <p>
           MERN full-stack post site with JWT Authorization/Authentication with
-          Typesript managed by Redux toolkit\n**Check README.md for login
+          Typesript managed by Redux toolkit<br/>**Check README.md for login
           information
         </p>
         <div className="space-x-2">
