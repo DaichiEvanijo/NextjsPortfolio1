@@ -19,7 +19,7 @@ export default async function Home() {
   const posts: PostType[] = await getCachedPostsForHeadline();
 
   return (
-    <Section className="">
+    <Section className="" >
       <section className="flex justify-center items-center min-h-[calc(100vh-72px)]">
         {/* hero image start */}
         <Image
