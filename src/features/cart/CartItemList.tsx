@@ -39,7 +39,7 @@ const CartItemList = () => {
     <>
       {cart && cart.length ? (
         <>
-          <ul className="w-full flex flex-wrap justify-start items-center gap-5">
+          <ul className="w-full flex flex-wrap justify-center items-center gap-5">
             {cart.map((product) => {
               return (
                 <li
