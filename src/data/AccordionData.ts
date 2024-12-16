@@ -9,7 +9,7 @@ const AccordionData = [
   },
   {
     language:"React.js",
-    keywords:"State Management (Redux toolkit, useContext API), useCallback, useMemo, React.memo, useReducer, useImperativeHandler, useDebounce, useLocalStorage, React-Bootstrap, Intersection Observer API, Axios, Thunder client and other basics..."
+    keywords:"State Management (Redux toolkit, useContext API), useCallback, useMemo, React.memo, useReducer, useImperativeHandler, useDebounce, useLocalStorage, react-error-boundary, React-Bootstrap, Basics of Testing (Jest, React Testing Library (Unit Test, Integration Test, Mock Service Worker)) Intersection Observer API, Axios, Thunder client and other basics..."
   },
   {
     language:"CSS",
