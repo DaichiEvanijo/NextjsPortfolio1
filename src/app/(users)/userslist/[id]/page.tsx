@@ -19,6 +19,7 @@ export const generateStaticParams = async () => {
   }
 };
 
+
 type UserPageProps = {
   params: Promise<{ id: string }>;
 };

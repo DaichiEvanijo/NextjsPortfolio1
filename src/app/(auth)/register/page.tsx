@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+
 const Register = () => {
   const clientAction = async (formData: FormData) => {
     const registration = {
@@ -37,6 +38,7 @@ const Register = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  
   return (
     <SectionForForm h2Text="Register">
       <Form clientAction={clientAction}>

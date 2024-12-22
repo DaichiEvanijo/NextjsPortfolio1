@@ -1,10 +1,10 @@
 "use server";
-
 import { connectToDatabase } from "@/lib/config/mongodb";
 import { registerSchema } from "../../../types/zodtypes";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
 import { getErrorMessage } from "../../functions/getErrorMessage";
+
 
 type handleRegistrationProps = {
   name: string;

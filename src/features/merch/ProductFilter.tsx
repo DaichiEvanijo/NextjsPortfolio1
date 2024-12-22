@@ -1,8 +1,8 @@
 "use client";
-
 import { ProductType } from "@/types/ProductType";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+
 
 type ProductFilterType = {
   products: ProductType[];
@@ -21,6 +21,7 @@ const ProductFilter = ({ products, category, search }: ProductFilterType) => {
     router.push(`/productslist?category=${e.target.value}&search=${search}`);
   };
 
+  
   return (
     <div className="flex flex-col items-start gap-1 w-32">
       <label htmlFor="countries">Country</label>

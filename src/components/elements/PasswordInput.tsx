@@ -6,8 +6,7 @@ type PasswordInputProps = {
   labelText: string;
 };
 const PasswordInput = ({ id, name, labelText }: PasswordInputProps) => {
-  const { showPassword, handleMouseDown, handleMouseLeave, handleMouseUp } =
-    usePasswordHideShow();
+  const { showPassword, handleMouseDown, handleMouseLeave, handleMouseUp } = usePasswordHideShow();
 
   return (
     <>
@@ -19,7 +18,8 @@ const PasswordInput = ({ id, name, labelText }: PasswordInputProps) => {
           name={name}
           required
           autoComplete="new-password"
-          className="w-[80%] border border-slate-300 rounded-md transition ease-out duration-300  hover:border-[dodgerblue] outline-none"/>
+          className="w-[80%] border border-slate-300 rounded-md transition ease-out duration-300  hover:border-[dodgerblue] outline-none"
+        />
         <span
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}

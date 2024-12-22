@@ -1,5 +1,4 @@
 "use client"
-
 import { signIn, signOut, useSession } from 'next-auth/react'
 import React from 'react'
 import { FaSpinner } from 'react-icons/fa';
@@ -12,6 +11,7 @@ const LoginLink = () => {
       <FaSpinner  size={20}/>
   </p>;
 }
+
 
   return (
     <>

@@ -1,5 +1,4 @@
 "use client"
-
 import { useCart } from "@/context/CartProvider";
 import Image from "next/image";
 import Button from "@/components/elements/Button";

@@ -1,5 +1,4 @@
 "use client"
-
 import AccordionData from "@/data/AccordionData"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import { useRef, useState } from "react"
@@ -9,14 +8,13 @@ import { FaMinus, FaPlus } from "react-icons/fa"
 const Accordion = () => {
   const ref = useRef<HTMLOListElement>(null)
   const isLoaded = useIntersectionObserver({options:[{threshold:0}], refs:[ref]})
-  
-
 
   const [selected, setSelected] = useState<null | number>(null)
   const toggle = (index:number) => {
     if(selected === index) return setSelected(null) 
     setSelected(index)
   }
+
 
   return (
     <section className="space-y-5">

@@ -1,9 +1,9 @@
 "use client"
-
 import Input from '@/components/elements/Input'
 import useDebounce from '@/hooks/useDebounce'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+
 
 const ProductSearch = ({category, search}:{category?:string, search?:string}) => {
   const [searchText, setSearchText] = useState(search)

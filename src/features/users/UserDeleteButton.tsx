@@ -5,6 +5,7 @@ import { UserType } from "@/types/UserType";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
+
 const UserDeleteButton = ({ user }: { user: UserType }) => {
   const router = useRouter();
 
@@ -23,6 +24,7 @@ const UserDeleteButton = ({ user }: { user: UserType }) => {
     }
   };
 
+  
   return (
     <Button type="button" onClick={() => clientAction(user._id)}>
       Delete user

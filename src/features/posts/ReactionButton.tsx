@@ -1,5 +1,4 @@
 "use client";
-
 import Button from "@/components/elements/Button";
 import { addReaction } from "@/lib/actions/posts/addReaction";
 import { PostType } from "@/types/PostType";
@@ -52,6 +51,7 @@ const ReactionButton = ({ post }: { post: PostType }) => {
     }
   };
 
+  
   return (
     <div className="flex gap-2 items-center">
       <Button

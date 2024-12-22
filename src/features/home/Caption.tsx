@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { useRef } from "react";
 import { FaLaptop } from "react-icons/fa";
@@ -12,6 +11,7 @@ const Caption = () => {
     options: [{ threshold: 0.2 }, { threshold: 0.2 }, { threshold: 0.2 }],
     refs: [ref1, ref2, ref3],
   });
+
 
   return (
     <>

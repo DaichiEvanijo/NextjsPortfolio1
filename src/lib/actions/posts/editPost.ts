@@ -5,6 +5,7 @@ import cloudinary from "@/lib/config/cloudinary";
 import { connectToDatabase } from "@/lib/config/mongodb";
 import { revalidatePath } from "next/cache";
 
+
 export const editPost = async ( 
   formData: FormData, id:string) => {
     const name = formData.get("name") as string;

@@ -1,5 +1,4 @@
 "use client"
-
 import Button from "@/components/elements/Button";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import Link from "next/link";
@@ -10,6 +9,7 @@ const PortfolioList = () => {
   const ref2 = useRef<HTMLLIElement>(null)
   const ref3 = useRef<HTMLLIElement>(null)
   const isLoaded = useIntersectionObserver({options:[{threshold:0},{threshold:0},{threshold:0}], refs:[ref1, ref2, ref3]})
+  
   
   return (
     <ol  className={"list-decimal list-inside space-y-4"}>

@@ -1,5 +1,4 @@
 "use client";
-
 import Button from "@/components/elements/Button";
 import { deletePost } from "@/lib/actions/posts/deletePost";
 import { useRouter } from "next/navigation";
@@ -23,6 +22,7 @@ const DeleteButton = ({ id }: { id: string }) => {
     }
   };
 
+  
   return <Button type="button" onClick={clientAction}>Delete post</Button>;
 };
 

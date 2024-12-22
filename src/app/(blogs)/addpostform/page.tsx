@@ -1,5 +1,4 @@
 "use client";
-
 import Button from "@/components/elements/Button";
 import Form from "@/components/elements/Form";
 import Input from "@/components/elements/Input";
@@ -34,6 +33,7 @@ const AddPostForm = () => {
       }
     }
   };
+
 
   return (
     <SectionForForm h2Text="Create Post">

@@ -1,6 +1,5 @@
 "use client";
 // Header 72px
-
 import Hamburger from "hamburger-react";
 import { RxAvatar } from "react-icons/rx";
 import { Session } from "next-auth";
@@ -25,6 +24,7 @@ const Header = () => {
         <FaSpinner  size={20}/>
     </p>;
   }
+
 
   return (
     <header className="z-10 h-[72px] sticky top-0  bg-gradient-to-r from-blue-200 via-yellow-200 to-blue-200 p-2 ">

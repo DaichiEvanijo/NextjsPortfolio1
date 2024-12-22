@@ -13,6 +13,7 @@ import DynamicImage from "@/components/elements/DynamicImage";
 import AddPostButton from "@/features/posts/AddPostButton";
 import ScrollToTop from "@/components/elements/ScrollToTop";
 
+
 type PostsListProps = {
   searchParams: Promise<{
     page: { [key: string]: string | string[] | undefined };

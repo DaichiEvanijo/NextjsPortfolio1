@@ -32,6 +32,7 @@ export const generateStaticParams = async () => {
   }
 };
 
+
 type SinglePostPageProps = {
   params: Promise<{ id: string }>;
 };

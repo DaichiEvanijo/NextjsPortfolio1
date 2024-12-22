@@ -1,10 +1,10 @@
 "use server";
-
 import { connectToDatabase } from "@/lib/config/mongodb";
 import { passwordResetSchema } from "../../../types/zodtypes";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
 import { getErrorMessage } from "../../functions/getErrorMessage";
+
 
 export const handleResetPassword = async (
   data: { password: string; matchPwd: string },

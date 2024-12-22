@@ -4,14 +4,15 @@ import { useCart } from "@/context/CartProvider";
 import { ProductType } from "@/types/ProductType";
 import React from "react";
 
+
 type AddToCartButtonProps = {
   product: ProductType;
 };
 const AddToCartButton = ({ product }: AddToCartButtonProps) => {
   const { increment, cart } = useCart();
 
-  const quantityInCart =
-    cart.find((item) => item._id === product._id)?.quantity || 0;
+  const quantityInCart = cart.find((item) => item._id === product._id)?.quantity || 0;
+
 
   return (
     <Button

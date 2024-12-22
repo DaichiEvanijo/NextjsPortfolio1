@@ -1,5 +1,4 @@
 "use server"
-
 import Post from "@/models/Post";
 import { connectToDatabase } from "@/lib/config/mongodb";
 import { revalidatePath } from "next/cache";

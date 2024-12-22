@@ -2,13 +2,13 @@ import Button from "@/components/elements/Button";
 import { ProductType } from "@/types/ProductType";
 import Link from "next/link";
 
+
 type ProductPaginationProps = {
   category?: string;
   search?: string;
   page: number;
   searchedProducts: ProductType[];
 };
-
 const ProductPagination = ({
   category,
   search,
@@ -22,6 +22,7 @@ const ProductPagination = ({
       pageNumbers.push(i);
     }
   }
+  
 
   return (
     <div className="flex justify-center items-center gap-3">

@@ -20,6 +20,7 @@ const ProductImage = async ({ product, ...props }: ProductImageProps) => {
   const buffer = await fs.readFile(filePath);
   const { base64 } = await getPlaiceholder(buffer);
 
+
   return (
     <Image
       src={`/products/${product.name}.jpg`}

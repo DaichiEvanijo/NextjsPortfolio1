@@ -9,7 +9,6 @@ import React from "react"
 
 
 export const POST = async (request: NextRequest) => {
-
   const payload = await request.text(); 
   const sig = request.headers.get("stripe-signature") as string;
   // sigはreqを送ってきたのはstripeであるということを確認するためのvalue

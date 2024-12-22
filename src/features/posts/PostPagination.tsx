@@ -2,12 +2,13 @@ import Button from "@/components/elements/Button";
 import { PostType } from "@/types/PostType";
 import Link from "next/link";
 
+
+
 type PaginationProps = {
   search?: string;
   page: number;
   searchedPosts: PostType[];
 };
-
 const Pagination = ({ search, page, searchedPosts }: PaginationProps) => {
   const pageNumbers = [];
   const offsetNumber = 3;
@@ -17,6 +18,7 @@ const Pagination = ({ search, page, searchedPosts }: PaginationProps) => {
     }
   }
 
+  
   return (
     <div className="flex justify-center items-center gap-3">
       <Button type="button" variant={page === 1 ? "disabled" : "default"}>

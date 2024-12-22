@@ -13,6 +13,7 @@ import useImagePreview from "@/hooks/useImagePreview";
 import PreviewImages from "@/components/elements/PreviewImages";
 import DynamicImage from "@/components/elements/DynamicImage";
 
+
 type EditFormProps = {
   post: PostType;
 };
@@ -40,6 +41,7 @@ const EditForm = ({ post }: EditFormProps) => {
       router.refresh();
     }
   };
+
 
   return (
     <section>
@@ -109,6 +111,9 @@ const EditForm = ({ post }: EditFormProps) => {
 
 export default EditForm;
 
+
+
+
 type EditPostImageListProps = {
   post: PostType;
   imageDeleteAction: (url: string) => void;
@@ -117,6 +122,7 @@ const EditPostImageList = ({
   post,
   imageDeleteAction,
 }: EditPostImageListProps) => {
+  
   return (
     <>
       {post.imageUrls.length > 0 &&

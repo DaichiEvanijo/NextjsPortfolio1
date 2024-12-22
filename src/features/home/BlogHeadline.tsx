@@ -5,6 +5,7 @@ import { PostType } from "@/types/PostType";
 import Link from "next/link";
 
 const BlogHeadline = ({ posts }: { posts: PostType[] }) => {
+  
   return (
     <section className="flex flex-col gap-4 justify-center items-center w-full">
       <h3 className="text-2xl bg-gradient-to-r from-slate-400 via-yellow-200 to-yellow-500 text-transparent bg-clip-text">

@@ -1,5 +1,4 @@
 "use client";
-
 import Button from "@/components/elements/Button";
 import Form from "@/components/elements/Form";
 import Input from "@/components/elements/Input";
@@ -8,6 +7,7 @@ import { handleForgetPassword } from "@/lib/actions/auth/handleForgetPassword";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+
 
 const Forgetpassword = () => {
   const router = useRouter()
@@ -23,6 +23,7 @@ const Forgetpassword = () => {
     }
   }
 
+  
   return (
     <SectionForForm h2Text="Reset your password here">
       <Form clientAction={clientAction}>
