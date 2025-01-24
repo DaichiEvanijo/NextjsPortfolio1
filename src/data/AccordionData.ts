@@ -1,7 +1,7 @@
 const AccordionData = [
   {
     language:"Next.js",
-    keywords:"App router, Server actions with zod validation,  useActionState, useOptimistic,  Data request memorization of ORM data fetching with \"cache function\",  Caching of ORM data fetching with \"unstable_cache function\",  Parallel data fetching with Promise.all,  Passing server component as child prop into client component, URL state with searchParams,  Server side cache (Full Route Cache),  Client side cache (Router cache),  Image component (placeholder, sizes, blurDataUrl props) with plaiceholder, generateMetadata,  generateStaticParams, Next-Auth, Role-based Authorization, Password reset function, module-augmentatin, signIn/redirect/jwt/session callback, profile function, authorize function and other basics..."
+    keywords:"App router, Server actions with zod validation,  useActionState, useOptimistic,  Data request memorization of ORM data fetching with \"cache function\",  Caching of ORM data fetching with \"unstable_cache function\",  Parallel data fetching with Promise.all,  Passing server component as child prop into client component, URL state with searchParams,  Server side cache (Full Route Cache),  Client side cache (Router cache),  Image component (placeholder, sizes, blurDataUrl props) with plaiceholder, generateMetadata,  generateStaticParams, Next-Auth, Role-based Authorization, Password reset function, module-augmentation, signIn/redirect/jwt/session callback, profile function, authorize function and other basics..."
   },
   {
     language:"Typescript",
@@ -17,11 +17,11 @@ const AccordionData = [
   },
   {
     language:"Backend skills",
-    keywords:"Node.js/Express.js (JWT Authentication/Authorization with accessToken/refreshToken, Role-based authorization,  Basic API creations,  middleware,  nodemailder,  CORS), MongoDB (basic CRUD operation with Mongoose ), Stripe, resend, react-email, Cloudinary (image upload/delete), GraphQL (basic CRUD)"
+    keywords:"Node.js/Express.js (JWT Authentication/Authorization with accessToken/refreshToken, Role-based authorization,  Basic API creations,  middleware,  nodemailder,  CORS), Prisma (basic CRUD with PostgreSQL, seeding), MongoDB (basic CRUD operation with Mongoose), Stripe, resend, react-email, Cloudinary (image upload/delete), GraphQL (basic CRUD)"
   },
   {
     language:"Others",
-    keywords:"GitHub, Git, GitLab, Slack (Gitlab and Slack were used at my previous company)"
+    keywords:"GitHub, Git basic (difference between rebase and merge, branching, unstaging with gitrestore, git restore --staged, git diff, git diff --staged, remote tracking branch, upstream branch, gitstash), GitLab, Slack (Gitlab and Slack were used at my previous company)"
   },
 ]
 
