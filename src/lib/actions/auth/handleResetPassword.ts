@@ -5,7 +5,6 @@ import User from "@/models/User";
 import bcrypt from "bcrypt";
 import { getErrorMessage } from "../../functions/getErrorMessage";
 
-
 export const handleResetPassword = async (
   data: { password: string; matchPwd: string },
   params: string
@@ -23,8 +22,8 @@ export const handleResetPassword = async (
   console.log(`accpeted resetToken: ${params}`);
   console.log(`${result.data.password} ${params}`);
 
-  await connectToDatabase();
 
+  await connectToDatabase();
   const foundUser = await User.findOne({
     resetToken: params,
     tokenExpiration: { $gt: Date.now() },
@@ -32,7 +31,7 @@ export const handleResetPassword = async (
   // $gt: greater than
   if (!foundUser)
     return {
-      message: "invalid or expired token was sent",
+      error: "invalid or expired token was sent",
     };
 
   try {
@@ -43,7 +42,7 @@ export const handleResetPassword = async (
     await foundUser.save();
   } catch (err) {
     return {
-      message: getErrorMessage(err),
+      error: getErrorMessage(err),
     };
   }
 
