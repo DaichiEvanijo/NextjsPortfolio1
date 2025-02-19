@@ -3,14 +3,14 @@ Next.js (App Router) Next-Auth full-stack Blogs/E-commerce website using Typescr
 
 
 ## Login Info
-- Login as Admin : Username:Daichi Password:Aa$12345 roles:5150 (as Admin)  
-- Login as User : Other users (also new users) will be automatically assigned with role:2001 (as User)  
+- Login as Admin (role:5150) : Username:Daichi Password:Aa$12345   
+- Login as User (role:2001) : Username:Stefanie Password:Bb$12345 / other users and new users 
 - Without login : Website visitor can see post list and individual posts, shop in merchandise page  
 
 ※Login as Admin(5150) (e.g.Daichi) →  
-Login user is able to create, edit/delete(only the posts only this user created), see the posts by users and react by liking posts created by other users and visit the Admin page  
-※Login as User(2001) (e.g.Takahiro) →   
-Login user is able to create, edit/delete(only the posts this user created), see the posts by users and react by liking posts created by other users  
+Login user is able to create, edit/delete(only the posts the user created), react by liking posts created by other users and visit the Admin page  
+※Login as User(2001) (e.g.Stefanie) →   
+Login user is able to create, edit/delete(only the posts this user created), react by liking posts created by other users  
 
 
 ## Implemented skills  
