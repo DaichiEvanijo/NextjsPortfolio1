@@ -9,21 +9,15 @@ const getPostsForHeadline = async (): Promise<PostType[]> => {
   try {
     await connectToDatabase();
     const posts = await Post.find().sort({ createdAt: -1 }).limit(3);
-    const serializedPosts: PostType[] = posts.map((post) => {
+    
+    return posts.map(post => {
+      const postObj = post.toObject(); 
+      const {_id, ...rest} = postObj
       return {
-        _id: post._id.toString(),
-        name: post.name,
-        title: post.title,
-        body: post.body,
-        imageUrls: post.imageUrls,
-        reactions: post.reactions,
-        reactedUsers: post.reactedUsers,
-        provider: post.provider,
-        createdAt: post.createdAt,
-        updatedAt: post.updatedAt,
-      };
+        _id:_id.toString(),
+        ...rest,
+      }
     });
-    return serializedPosts;
   } catch (err) {
     throw new Error(`failed to fetch 3 posts for headline,${err}`);
   }
@@ -54,21 +48,15 @@ const getPostsforPagination = async (
       .limit(limit)
       .skip((page - 1) * limit)
       .sort({ createdAt: -1 });
-    const serializedPosts: PostType[] = posts.map((post) => {
-      return {
-        _id: post._id.toString(),
-        name: post.name,
-        title: post.title,
-        body: post.body,
-        imageUrls: post.imageUrls,
-        reactions: post.reactions,
-        reactedUsers: post.reactedUsers,
-        provider: post.provider,
-        createdAt: post.createdAt,
-        updatedAt: post.updatedAt,
-      };
-    });
-    return serializedPosts;
+
+      return posts.map(post => {
+        const postObj = post.toObject(); 
+        const {_id, ...rest} = postObj
+        return {
+          _id:_id.toString(),
+          ...rest,
+        }
+      });
   } catch (err) {
     throw new Error(`failed to fetch posts for pagination,${err}`);
   }
@@ -97,21 +85,15 @@ const getPostsForSearchbar = async (
       : {};
 
     const posts = await Post.find(query);
-    const serializedPosts: PostType[] = posts.map((post) => {
+    
+    return posts.map(post => {
+      const postObj = post.toObject(); 
+      const {_id, ...rest} = postObj
       return {
-        _id: post._id.toString(),
-        name: post.name,
-        title: post.title,
-        body: post.body,
-        imageUrls: post.imageUrls,
-        reactions: post.reactions,
-        reactedUsers: post.reactedUsers,
-        provider: post.provider,
-        createdAt: post.createdAt,
-        updatedAt: post.updatedAt,
-      };
+        _id:_id.toString(),
+        ...rest,
+      }
     });
-    return serializedPosts;
   } catch (err) {
     throw new Error(`failed to fetch posts for searchbar, ${err}`);
   }
@@ -128,19 +110,8 @@ const getIndividualPost = async (id: string): Promise<PostType> => {
     if (!post) {
       throw new Error(`Post with id ${id} not found`);
     }
-    const serializedPost: PostType = {
-      _id: post._id.toString(),
-      name: post.name,
-      title: post.title,
-      body: post.body,
-      imageUrls: post.imageUrls,
-      reactions: post.reactions,
-      reactedUsers: post.reactedUsers,
-      provider: post.provider,
-      createdAt: post.createdAt,
-      updatedAt: post.updatedAt,
-    };
-    return serializedPost;
+    const { _id, ...rest } = post.toObject();
+    return { _id: _id.toString(), ...rest };
   } catch (err) {
     throw new Error(`failed to fetch posts, ${err}`);
   }
@@ -157,21 +128,15 @@ export const getPostsByUser = async (
   try {
     await connectToDatabase();
     const posts = await Post.find({ name, provider }).sort({ createdAt: -1 });
-    const serializedPosts: PostType[] = posts.map((post) => {
+    
+    return posts.map(post => {
+      const postObj = post.toObject(); 
+      const {_id, ...rest} = postObj
       return {
-        _id: post._id.toString(),
-        name: post.name,
-        title: post.title,
-        body: post.body,
-        imageUrls: post.imageUrls,
-        reactions: post.reactions,
-        reactedUsers: post.reactedUsers,
-        provider: post.provider,
-        createdAt: post.createdAt,
-        updatedAt: post.updatedAt,
-      };
+        _id:_id.toString(),
+        ...rest,
+      }
     });
-    return serializedPosts;
   } catch (err) {
     throw new Error(`failed to fetch posts by user:${err}`);
   }

@@ -30,15 +30,15 @@ const getProductsforPagination = async (
     const products = await Product.find(query)
       .limit(limit)
       .skip((page - 1) * limit);
-    const serializedProducts: ProductType[] = products.map((product) => {
-      return {
-        _id: product._id.toString(),
-        name: product.name,
-        category: product.category,
-        price: product.price,
-      };
-    });
-    return serializedProducts;
+      
+      return products.map(product => {
+        const productObj = product.toObject(); 
+        const {_id, ...rest} = productObj
+        return {
+          _id:_id.toString(),
+          ...rest,
+        }
+      });
   } catch (err) {
     throw new Error(`failed to fetch products for pagination,${err}`);
   }
@@ -76,15 +76,15 @@ const getProductsForSearchbar = async (
     }
 
     const products = await Product.find(query);
-    const serializedProducts: ProductType[] = products.map((product) => {
+
+    return products.map(product => {
+      const productObj = product.toObject(); 
+      const {_id, ...rest} = productObj
       return {
-        _id: product._id.toString(),
-        name: product.name,
-        category: product.category,
-        price: product.price,
-      };
+        _id:_id.toString(),
+        ...rest,
+      }
     });
-    return serializedProducts;
   } catch (err) {
     throw new Error(
       `failed to fetch products for searchbar and category, ${err}`
@@ -103,13 +103,13 @@ const getIndividualProducts = async (id: string): Promise<ProductType> => {
     if (!product) {
       throw new Error(`Product with id ${id} not found`);
     }
-    const serializedProduct: ProductType = {
-      _id: product._id.toString(),
-      name: product.name,
-      category: product.category,
-      price: product.price,
-    };
-    return serializedProduct;
+    
+    const productObj = product.toObject(); 
+    const {_id, ...rest} = productObj
+    return {
+      _id:_id.toString(),
+      ...rest,
+    }
   } catch (err) {
     throw new Error(`failed to fetch individual product, ${err}`);
   }
