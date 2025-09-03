@@ -14,6 +14,7 @@ export const addPost = async (
   const body = formData.get("body") as string;
   const images = formData.getAll("images") as File[]
   const validImages = images.filter(image => image.size > 0);
+  // <input type="file" /> の onChange で何も選択せずにキャンセルすると、フォームには空の File が含まれることがあります。File { name: "", size: 0, type: "" },  // 空のFileオブジェクト
   if (!name || !title || !body) {
     return { message: "author, title, body are required" };
   }
@@ -25,7 +26,7 @@ export const addPost = async (
   if(validImages.length > 0){
     try {
         const uploadPromises = validImages.map(async(image) => {
-          // Fileオブジェクト→ArrayBuffer: ブラウザ環境で扱われる低レベルのバイナリデータ形式(JavaScriptで生のバイナリーデータ)→
+          // Fileオブジェクト→ArrayBuffer: ブラウザ環境で扱われる低レベルのバイナリデータ形式(JavaScriptの生のバイナリーデータ)→
           // Buffer: Node.js環境で扱われるバイナリデータ形式へ変換 
         const arrayBuffer = await image.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);

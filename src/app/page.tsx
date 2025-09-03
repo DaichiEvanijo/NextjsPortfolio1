@@ -34,13 +34,13 @@ export default async function Home() {
         {/* hero image end */}
 
         {/* text in hero image start*/}
-        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-52 gap-24  animate-fromAbove p-6">
+        <div className="flex flex-col md:flex-row gap-24 md:gap-24 animate-fromAbove">
           <TypeAnimation
-            className="text-2xl font-bold bg-gradient-to-r from-white via-white to-yellow-500  text-transparent bg-clip-text text-center h-[18vh]"
+            className="text-2xl font-bold bg-gradient-to-r from-white via-white to-yellow-500  text-transparent bg-clip-text text-center h-[20vh] w-[300px]"
             sequence={[
               `I am\nDaichi\nKoyanagi`,
               2000,
-              `I am\na self-taught\nfrontend\ndeveloper`,
+              `I am\na professional\nfull-stack\nweb developer`,
               2000,
               `I am\npassionate\nabout\nprogramming`,
               2000,

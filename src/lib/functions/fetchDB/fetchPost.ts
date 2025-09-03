@@ -130,8 +130,10 @@ export const getPostsByUser = async (
     const posts = await Post.find({ name, provider }).sort({ createdAt: -1 });
     
     return posts.map(post => {
+      // toObject() を使って、Mongoose ドキュメントから不要なメソッドやプロパティを取り除きます。
       const postObj = post.toObject(); 
       const {_id, ...rest} = postObj
+      // _id を文字列に変換し、新しいオブジェクトを返す      
       return {
         _id:_id.toString(),
         ...rest,

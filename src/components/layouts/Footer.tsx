@@ -17,12 +17,12 @@ const Footer = () => {
         <div className="border-2 rounded border-slate-300 flex flex-col gap-2">
           <p className="text-2xl">Contact</p>
           <p>
-            Kurfürstenstraße 31
+            Otemon 2-29 Chuo-ku Fukuoka-shi
             <br />
-            40211 Düsseldorf Deutschland
+            810-0074 Fukuoka Japan
           </p>
           <p>
-            +4917681526599
+            +819073113961
             <br />
             takanogi2468@gmail.com
           </p>

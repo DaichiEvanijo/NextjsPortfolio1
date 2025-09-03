@@ -16,7 +16,7 @@ import ScrollToTop from "@/components/elements/ScrollToTop";
 
 type PostsListProps = {
   searchParams: Promise<{
-    page: { [key: string]: string | string[] | undefined };
+    page: string | undefined
     search: string | undefined;
   }>;
 };
